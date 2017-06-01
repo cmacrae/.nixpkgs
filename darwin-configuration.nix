@@ -18,6 +18,7 @@
     pkgs.gnused
     pkgs.go
     pkgs.jq
+    pkgs.lastpass-cli
     pkgs.ncat
     pkgs.nix-repl
     pkgs.nodejs
