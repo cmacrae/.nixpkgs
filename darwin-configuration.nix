@@ -39,6 +39,7 @@
     enableCompletion = true;
     enableBashCompletion = true;
     enableSyntaxHighlighting = true;
+    promptInit = "autoload -Uz promptinit && promptinit";
 
     variables = {
       # General
@@ -62,7 +63,7 @@
       HISTFILE = "~/.history";
     };
 
-    loginShellInit = ''
+    interactiveShellInit = ''
       autoload -Uz zutil
       autoload -Uz complist
       autoload -Uz colors && colors
@@ -79,21 +80,21 @@
       bindkey -e
       bindkey '^R' history-incremental-search-backward
 
-      # Prompts
-      if [[ ! -n $INSIDE_EMACS ]]; then
-      export "PROMPT=
-      %{$fg[blue]%}%m %{$fg[red]%}$ %{$reset_color%}"
-      export "RPROMPT=%{$fg[red]%}%~%f%b"
-      else
-      export "PROMPT=
-      %{$fg[blue]%}%~ %{$fg[red]%}$ %f%b"
-      fi
-
       export PATH=${config.environment.systemPath}
       ${config.system.build.setEnvironment}
 
       # Set EDITOR here after nix calls setEnvironment
       export EDITOR="emacsclient";
+
+      # Prompts
+      if [[ ! -n $INSIDE_EMACS ]]; then
+      export "PROMPT=
+      %{$fg[blue]%}%n %{$fg[red]%}$ %{$reset_color%}"
+      export "RPROMPT=%{$fg[blue]%}%~%f%b"
+      else
+      export "PROMPT=
+      %{$fg[blue]%}%~ %{$fg[red]%}$ %f%b"
+      fi
 
       # Aliases
       alias ls="ls -G"
