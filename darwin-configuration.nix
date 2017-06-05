@@ -125,9 +125,6 @@
   # Recreate /run/current-system symlink after boot
   services.activate-system.enable = true;
 
-  # Emacs server
-  services.emacs.enable = true;
-
   # Postbuild actions
   environment.postBuild = ''
     HOME=/Users/cmacrae
