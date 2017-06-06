@@ -56,7 +56,7 @@
       LESS_TERMCAP_so = "$'\E[01;44;33m'";
       LESS_TERMCAP_ue = "$'\E[0m'";
       LESS_TERMCAP_us = "$'\E[01;32m'";
-      
+
       # History
       HISTSIZE = "1000";
       SAVEHIST = "1000";
@@ -125,8 +125,67 @@
   # Recreate /run/current-system symlink after boot
   services.activate-system.enable = true;
 
+  # kwm/khd
+  #security.enableAccessibilityAccess = true;
+  #security.accessibilityPrograms = [
+  #  "${pkgs.kwm}bin/kwm"
+  #  "${pkgs.khd}bin/khd"
+  #];
+
+  services.khd.enable = true;
+  services.kwm.enable = true;
+  services.khd.khdConfig = ''
+    # kwm compatibility mode
+    khd kwm on
+
+    # Navigation
+    cmd + lctrl - h    :   kwmc window -f west
+    cmd + lctrl - j    :   kwmc window -f south
+    cmd + lctrl - k    :   kwmc window -f north
+    cmd + lctrl - l    :   kwmc window -f east
+
+    # Window movement
+    cmd + shift - h   :   kwmc window -s west
+    cmd + shift - j   :   kwmc window -s south
+    cmd + shift - k   :   kwmc window -s north
+    cmd + shift - l   :   kwmc window -s east
+
+    cmd + shift + lctrl - h   :   kwmc window -m west
+    cmd + shift + lctrl - j   :   kwmc window -m south
+    cmd + shift + lctrl - l   :   kwmc window -m east
+    cmd + shift + lctrl - k   :   kwmc window -m north
+
+    cmd + lctrl - r           :   kwmc tree rotate 90
+
+    # Space movement
+    cmd + lctrl - 1   :   kwmc space -fExperimental 1
+    cmd + lctrl - 2   :   kwmc space -fExperimental 2
+    cmd + lctrl - 3   :   kwmc space -fExperimental 3
+    cmd + lctrl - 4   :   kwmc space -fExperimental 4
+    cmd + lctrl - 5   :   kwmc space -fExperimental 5
+    cmd + lctrl - 6   :   kwmc space -fExperimental 6
+
+    #cmd - "["            :   kwmc space -fExperimental left
+    #cmd - "["            :   kwmc space -fExperimental right
+    #cmd - "{"            :   kwmc space -fExperimental previous
+
+    # Layout manipulation
+    cmd + lctrl - t   :   kwmc space -t bsp
+    cmd + lctrl - m   :   kwmc space -t monocle
+    cmd + lctrl - s   :   kwmc space -t float
+    cmd + lctrl - f   :   kwmc window -z fullscreen
+
+    # Window portion manipulation
+    cmd + lctrl - x               :   kwmc space -g increase horizontal
+    cmd + lctrl - y               :   kwmc space -g increase vertical
+
+    cmd + shift + lctrl - x       :   kwmc space -g decrease horizontal
+    cmd + shift + lctrl - y       :   kwmc space -g decrease vertical
+  '';
+
   # Postbuild actions
   environment.postBuild = ''
+    # Global Emacs keybindings
     HOME=/Users/cmacrae
     KEYFILE="$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
     mkdir -p $HOME/Library/KeyBindings
@@ -155,5 +214,8 @@
       "~V" = pageUpAndModifySelection:;
     }
     EOF
+
+    # Quiet interactive shell
+    test -f ~/.hushlogin || touch ~/.hushlogin
   '';
 }
