@@ -33,6 +33,33 @@
 
   environment.extraOutputsToInstall = [ "man" ];
 
+  environment.variables = {
+    # General
+    HOME = "/Users/cmacrae";
+    GOROOT = "${pkgs.go}/share/go";
+    GOPATH = "$HOME/code/go";
+    GOWORKSPACE = "$HOME/code/go/src/github.com/cmacrae";
+    PAGER = "less -R";
+
+    # Nicer manpages
+    LESS_TERMCAP_mb = "$'\E[01;31m'";
+    LESS_TERMCAP_md = "$'\E[01;31m'";
+    LESS_TERMCAP_me = "$'\E[0m'";
+    LESS_TERMCAP_se = "$'\E[0m'";
+    LESS_TERMCAP_so = "$'\E[01;44;33m'";
+    LESS_TERMCAP_ue = "$'\E[0m'";
+    LESS_TERMCAP_us = "$'\E[01;32m'";
+
+    # History
+    HISTSIZE = "1000";
+    SAVEHIST = "1000";
+    HISTFILE = "~/.history";
+
+    # Terminfo
+    TERMINFO = "/usr/share/terminfo/";
+  };
+
+
   # Shell configuration
   programs.zsh = {
     enable = true;
@@ -40,29 +67,6 @@
     enableBashCompletion = true;
     enableSyntaxHighlighting = true;
     promptInit = "autoload -Uz promptinit && promptinit";
-
-    variables = {
-      # General
-      HOME = "/Users/cmacrae";
-      GOPATH = "$HOME/code/go";
-      GOWORKSPACE = "$HOME/code/go/src/github.com/cmacrae";
-      PAGER = "less -R";
-
-      # Nicer manpages
-      LESS_TERMCAP_mb = "$'\E[01;31m'";
-      LESS_TERMCAP_md = "$'\E[01;31m'";
-      LESS_TERMCAP_me = "$'\E[0m'";
-      LESS_TERMCAP_se = "$'\E[0m'";
-      LESS_TERMCAP_so = "$'\E[01;44;33m'";
-      LESS_TERMCAP_ue = "$'\E[0m'";
-      LESS_TERMCAP_us = "$'\E[01;32m'";
-
-      # History
-      HISTSIZE = "1000";
-      SAVEHIST = "1000";
-      HISTFILE = "~/.history";
-    };
-
     interactiveShellInit = ''
       autoload -Uz zutil
       autoload -Uz complist
@@ -80,7 +84,7 @@
       bindkey -e
       bindkey '^R' history-incremental-search-backward
 
-      export PATH=${config.environment.systemPath}
+      export PATH=${config.environment.systemPath}:$GOPATH/bin:/opt/hashi/bin
       ${config.system.build.setEnvironment}
 
       # Set EDITOR here after nix calls setEnvironment
@@ -101,6 +105,7 @@
       alias rm="rm -i"
       alias cp="cp -i"
       alias gows="cd $GOWORKSPACE"
+      alias gometalinter="gometalinter.v1"
     '';
   };
 
