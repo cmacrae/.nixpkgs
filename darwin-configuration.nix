@@ -54,7 +54,7 @@
     # History
     HISTSIZE = "1000";
     SAVEHIST = "1000";
-    HISTFILE = "~/.history";
+    HISTFILE = "$HOME/.history";
 
     # Terminfo
     TERMINFO = "/usr/share/terminfo/";
