@@ -22,6 +22,7 @@
     pkgs.ncat
     pkgs.nix-repl
     pkgs.nodejs
+    pkgs.mysql
     pkgs.pass
     pkgs.pwgen
     pkgs.ripgrep
