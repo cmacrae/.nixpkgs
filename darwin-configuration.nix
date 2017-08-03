@@ -26,6 +26,7 @@
     pkgs.pass
     pkgs.pwgen
     pkgs.ripgrep
+    pkgs.rsync
     pkgs.tmux
     pkgs.tree
 
