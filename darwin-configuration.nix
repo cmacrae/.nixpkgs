@@ -23,6 +23,7 @@
     pkgs.nix-repl
     pkgs.nodejs
     pkgs.mysql
+    pkgs.openssh
     pkgs.pass
     pkgs.pwgen
     pkgs.ripgrep
