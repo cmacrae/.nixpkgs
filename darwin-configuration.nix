@@ -56,7 +56,6 @@
     TERMINFO = "/usr/share/terminfo/";
   };
 
-
   # Shell configuration
   programs.zsh = {
     enable = true;
@@ -216,41 +215,5 @@
 
     cmd + shift + lctrl - x       :   kwmc space -g decrease horizontal
     cmd + shift + lctrl - y       :   kwmc space -g decrease vertical
-  '';
-
-  # Postbuild actions
-  environment.postBuild = ''
-    # Global Emacs keybindings
-    HOME=/Users/cmacrae
-    KEYFILE="$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
-    mkdir -p $HOME/Library/KeyBindings
-    test -f $KEYFILE || cat > $KEYFILE <<EOF
-    {
-      "^ " = setMark:;
-      "^/" = undo:;
-      "^u" = deleteToBeginningOfParagraph:;
-      "^w" = deleteToMark:;
-      "^x" = {
-        "^x" = swapWithMark:;
-        "^m" = selectToMark:;
-      };
-      "^V" = pageDownAndModifySelection:;
-      "~@" = selectWord:;
-      "~b" = moveWordBackward:;
-      "~c" = (capitalizeWord:, moveForward:, moveForward:);
-      "~d" = deleteWordForward:;
-      "~f" = moveWordForward:;
-      "~l" = (lowercaseWord:, moveForward:, moveForward:);
-      "~u" = (uppercaseWord:, moveForward:, moveForward:);
-      "~v" = pageUp:;
-      "~w" = (deleteToMark:, setMark:, yank:, swapWithMark:);
-      "~B" = moveWordBackwardAndModifySelection:;
-      "~F" = moveWordForwardAndModifySelection:;
-      "~V" = pageUpAndModifySelection:;
-    }
-    EOF
-
-    # Quiet interactive shell
-    test -f ~/.hushlogin || touch ~/.hushlogin
   '';
 }
