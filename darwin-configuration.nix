@@ -27,6 +27,7 @@
     pkgs.pwgen
     pkgs.ripgrep
     pkgs.rsync
+    pkgs.ruby
     pkgs.tmux
     pkgs.tree
 
