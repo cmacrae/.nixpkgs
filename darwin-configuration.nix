@@ -37,6 +37,9 @@
   environment.extraOutputsToInstall = [ "man" ];
 
   environment.variables = {
+    # Nix
+    NIX_REMOTE = "daemon";
+
     # General
     HOME = "/Users/cmacrae";
     GOROOT = "${pkgs.go}/share/go";
