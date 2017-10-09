@@ -81,7 +81,6 @@
       bindkey '^R' history-incremental-search-backward
 
       export PATH=${config.environment.systemPath}:$GOPATH/bin:/opt/hashi/bin
-      ${config.system.build.setEnvironment}
 
       # Set EDITOR here after nix calls setEnvironment
       export EDITOR="emacsclient";
