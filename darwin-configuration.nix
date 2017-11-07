@@ -17,6 +17,7 @@
     pkgs.gnupg
     pkgs.gnused
     pkgs.go
+    pkgs.ipcalc
     pkgs.jq
     pkgs.ncat
     pkgs.nix-repl
