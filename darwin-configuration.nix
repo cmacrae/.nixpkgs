@@ -119,20 +119,23 @@
     FXEnableExtensionChangeWarning = false;
   };
 
-  # Trackpad tap to click
-  system.defaults.trackpad.Clicking = true;
+  # Trackpad
+  system.defaults.trackpad = {
+    Clicking = true;
+    TrackpadThreeFingerDrag = true;
+  };
+
+  # Keyboard
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
 
   # Services
   # Recreate /run/current-system symlink after boot
   services.activate-system.enable = true;
 
   # kwm/khd
-  security.enableAccessibilityAccess = true;
-  security.accessibilityPrograms = [
-   "${pkgs.kwm}bin/kwm"
-   "${pkgs.khd}bin/khd"
-  ];
-
   services.khd.enable = true;
   services.kwm.enable = true;
   services.kwm.kwmConfig = ''
