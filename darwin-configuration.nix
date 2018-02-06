@@ -57,6 +57,13 @@
     TERMINFO = "/usr/share/terminfo/";
   };
 
+  environment.shellAliases = {
+      ls = "ls -G";
+      rm = "rm -i";
+      cp = "cp -i";
+      gows = "cd $GOWORKSPACE";
+  };
+
   # Shell configuration
   programs.zsh = {
     enable = true;
@@ -95,13 +102,6 @@
       export "PROMPT=
       %{$fg[blue]%}%~ %{$fg[red]%}$ %f%b"
       fi
-
-      # Aliases
-      alias ls="ls -G"
-      alias rm="rm -i"
-      alias cp="cp -i"
-      alias gows="cd $GOWORKSPACE"
-      alias gometalinter="gometalinter.v1"
     '';
   };
 
