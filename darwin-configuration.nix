@@ -90,9 +90,6 @@
 
       export PATH=${config.environment.systemPath}:$GOPATH/bin:/opt/hashi/bin
 
-      # Set EDITOR here after nix calls setEnvironment
-      export EDITOR="emacsclient";
-
       # Prompts
       if [[ ! -n $INSIDE_EMACS ]]; then
       export "PROMPT=
