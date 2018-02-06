@@ -1,52 +1,118 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  unstable = import <nixpkgs-unstable> {};
+
+in {
+  system.stateVersion = 2;
+  nix.maxJobs = 4;
+  nix.trustedUsers = [ "cmacrae" ];
+
+  nixpkgs.overlays = [
+    (self: super:
+      {
+        # Go linting
+        gometalinter = super.callPackage ./overlays/goMetaLinter/main.nix {};
+        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst/main.nix {};
+        gas = super.callPackage ./overlays/goMetaLinter/linters/gas/main.nix {};
+        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode/main.nix {};
+        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned/main.nix {};
+        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck/main.nix {};
+        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo/main.nix {};
+        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck/main.nix {};
+        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert/main.nix {};
+
+        # Go REPL
+        gore = super.callPackage ./overlays/gore/main.nix {};
+
+        # Broken Go linting packages
+        # megacheck = super.callPackage ./overlays/goMetaLinter/linters/megacheck/main.nix {}; FIXME
+        # ineffassign = super.callPackage ./overlays/goMetaLinter/linters/ineffassign/main.nix {}; FIXME
+        # interfacer = super.callPackage ./overlays/goMetaLinter/linters/interfacer/main.nix {}; FIXME
+      }
+    )
+  ];
+
   # Packages
   nix.package = pkgs.nix;
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = [
-    pkgs.ansible
-    pkgs.aspell
-    pkgs.aspellDicts.en
-    pkgs.aspellDicts.uk
-    pkgs.awscli
-    pkgs.bash
-    pkgs.curl
-    pkgs.emacs
-    pkgs.git
-    pkgs.gnupg
-    pkgs.gnused
-    pkgs.go
-    pkgs.ipcalc
-    pkgs.jq
-    pkgs.ncat
-    pkgs.nix-repl
-    pkgs.nodejs
-    pkgs.mysql
-    pkgs.openssh
-    pkgs.pass
-    pkgs.pwgen
-    pkgs.ripgrep
-    pkgs.rsync
-    pkgs.ruby
-    pkgs.tmux
-    pkgs.tree
+  environment.systemPackages = with pkgs; [
+    # General
+    ansible
+    aspell
+    aspellDicts.en
+    aspellDicts.uk
+    awscli
+    bash
+    curl
+    cmus
+    emacs
+    git
+    gnupg
+    gnused
+    id3lib
+    ipcalc
+    ipfs
+    jq
+    ncat
+    nix-repl
+    nodejs
+    mysql
+    openssh
+    pass
+    pwgen
+    ripgrep
+    rsync
+    ruby
+    tmux
+    tree
+    wget
 
-    pkgs.nix
+    # Go
+    unstable.go
+    unstable.gocode
+    unstable.godef
+    unstable.gotools
+    unstable.golint
+    unstable.go2nix
+
+    # HashiCorp
+    consul
+    packer
+    terraform_0_10
+    vault
+
+    # Overlays
+    gometalinter
+    goconst
+    gas
+    deadcode
+    maligned
+    structcheck
+    gocyclo
+    errcheck
+    unconvert
+    gore
+    # ineffassign FIXME
+    # megacheck FIXME
+    # interfacer FIXME
+
+    # Nix
+    nix
   ];
 
   environment.extraOutputsToInstall = [ "man" ];
-
   environment.variables = {
     # Nix
     NIX_REMOTE = "daemon";
 
     # General
     HOME = "/Users/cmacrae";
-    GOROOT = "${pkgs.go}/share/go";
+    GOROOT = "${unstable.go}/share/go";
     GOPATH = "$HOME/code/go";
     GOWORKSPACE = "$HOME/code/go/src/github.com/cmacrae";
     PAGER = "less -R";
+    EDITOR = "emacsclient";
 
     # History
     HISTSIZE = "1000";
