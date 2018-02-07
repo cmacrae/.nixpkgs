@@ -55,7 +55,6 @@ in {
     ipfs
     jq
     ncat
-    nix-repl
     nodejs
     mysql
     openssh
@@ -77,10 +76,11 @@ in {
     unstable.go2nix
 
     # HashiCorp
-    consul
-    packer
-    terraform_0_10
-    vault
+    unstable.consul
+    unstable.consul-template
+    unstable.packer
+    unstable.terraform
+    unstable.vault
 
     # Overlays
     gometalinter
@@ -99,6 +99,7 @@ in {
 
     # Nix
     nix
+    nix-repl
   ];
 
   environment.extraOutputsToInstall = [ "man" ];
@@ -154,7 +155,7 @@ in {
       bindkey -e
       bindkey '^R' history-incremental-search-backward
 
-      export PATH=${config.environment.systemPath}:$GOPATH/bin:/opt/hashi/bin
+      export PATH=${config.environment.systemPath}:$GOPATH/bin
 
       # Prompts
       if [[ ! -n $INSIDE_EMACS ]]; then
