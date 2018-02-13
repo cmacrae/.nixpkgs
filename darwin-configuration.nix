@@ -12,18 +12,18 @@ in {
     (self: super:
       {
         # Go linting
-        gometalinter = super.callPackage ./overlays/goMetaLinter/main.nix {};
-        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst/main.nix {};
-        gas = super.callPackage ./overlays/goMetaLinter/linters/gas/main.nix {};
-        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode/main.nix {};
-        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned/main.nix {};
-        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck/main.nix {};
-        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo/main.nix {};
-        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck/main.nix {};
-        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert/main.nix {};
+        gometalinter = super.callPackage ./overlays/goMetaLinter/default.nix {};
+        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst/default.nix {};
+        gas = super.callPackage ./overlays/goMetaLinter/linters/gas/default.nix {};
+        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode/default.nix {};
+        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned/default.nix {};
+        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck/default.nix {};
+        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo/default.nix {};
+        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck/default.nix {};
+        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert/default.nix {};
 
         # Go REPL
-        gore = super.callPackage ./overlays/gore/main.nix {};
+        gore = super.callPackage ./overlays/gore/default.nix {};
 
         # Broken Go linting packages
         # megacheck = super.callPackage ./overlays/goMetaLinter/linters/megacheck/main.nix {}; FIXME
