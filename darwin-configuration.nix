@@ -3,6 +3,12 @@
 let
   unstable = import <nixpkgs-unstable> {};
 
+  # Custom packages
+  # See relevant import paths for details
+  customPkg = {
+    vault = (import ./pkgs/vault/default.nix);
+  };
+
 in {
   system.stateVersion = 2;
   nix.maxJobs = 4;
@@ -80,7 +86,7 @@ in {
     unstable.consul-template
     unstable.packer
     unstable.terraform
-    unstable.vault
+    customPkg.vault
 
     # Overlays
     gometalinter
