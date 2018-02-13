@@ -1,7 +1,8 @@
 # The version of Vault in official channels does not
-# honor macOS keychain certificate authorizations.
+# honour macOS keychain certificate authorisations.
 # Here, I'm simply grabbing the precompiled binary
 # directly from HashiCorp as a workaround.
+# Reported: https://github.com/NixOS/nixpkgs/issues/34934
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
