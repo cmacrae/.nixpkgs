@@ -100,6 +100,7 @@ in {
     # Nix
     nix
     nix-repl
+    nix-prefetch-git
   ];
 
   environment.extraOutputsToInstall = [ "man" ];
