@@ -11,7 +11,8 @@ let
 
 in {
   system.stateVersion = 2;
-  nix.maxJobs = 4;
+  nix.maxJobs = 8;
+  nix.useSandbox = true;
   nix.trustedUsers = [ "cmacrae" ];
 
   nixpkgs.overlays = [
