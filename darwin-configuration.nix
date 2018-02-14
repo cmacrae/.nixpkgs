@@ -10,6 +10,8 @@ let
   };
 
 in {
+
+  # Nix config
   system.stateVersion = 2;
   nix.maxJobs = 8;
   nix.useSandbox = true;
@@ -176,6 +178,10 @@ in {
       fi
     '';
   };
+
+  # System
+  # Time
+  time.timeZone = "Europe/London";
 
   # Dock configuration
   system.defaults.dock = {
