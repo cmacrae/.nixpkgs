@@ -16,6 +16,7 @@ in {
   nix.maxJobs = 8;
   nix.useSandbox = true;
   nix.trustedUsers = [ "cmacrae" ];
+  nix.gc.automatic = true;
 
   nixpkgs.overlays = [
     (self: super:
