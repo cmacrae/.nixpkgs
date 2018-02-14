@@ -118,7 +118,7 @@ in {
     HOME = "/Users/cmacrae";
     GOROOT = "${unstable.go}/share/go";
     GOPATH = "$HOME/code/go";
-    GOWORKSPACE = "$HOME/code/go/src/github.com/cmacrae";
+    GOWORKSPACE = "$GOPATH/src/github.com/cmacrae";
     PAGER = "less -R";
     EDITOR = "emacsclient";
 
