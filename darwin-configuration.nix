@@ -14,7 +14,6 @@ in {
   # Nix config
   system.stateVersion = 2;
   nix.maxJobs = 8;
-  nix.useSandbox = true;
   nix.trustedUsers = [ "cmacrae" ];
   nix.gc.automatic = true;
 
