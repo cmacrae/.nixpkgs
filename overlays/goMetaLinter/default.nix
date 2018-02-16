@@ -4,14 +4,14 @@
 buildGoPackage rec {
   name = "gometalinter-v2-unstable-${version}";
   version = "2018-02-05";
-  rev = "db3d12654be9f43a073d4be01c139afd0174419d";
+  rev = "46cc1ea3778b247666c2949669a3333c532fa9c6";
 
   goPackagePath = "gopkg.in/alecthomas/gometalinter.v2";
 
   src = fetchgit {
     inherit rev;
     url = "https://gopkg.in/alecthomas/gometalinter.v2";
-    sha256 = "1bqgqzz8j0p45njpyf4wick00jbji9xf0mklr4rlcibxnd9n3cfd";
+    sha256 = "0sfh8q8lssczg8s46k0n95ihrdpppmqgi66df6pn8wslz4s592rg";
   };
 
   goDeps = ./deps.nix;
