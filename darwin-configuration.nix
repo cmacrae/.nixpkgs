@@ -72,7 +72,6 @@ in {
     ripgrep
     rsync
     ruby
-    tmux
     tree
     wget
 
@@ -139,6 +138,14 @@ in {
       rm = "rm -i";
       cp = "cp -i";
       gows = "cd $GOWORKSPACE";
+  };
+
+  # tmux
+  programs.tmux = {
+    enable = true;
+    enableVim = true;
+    iTerm2 = true;
+    tmuxConfig = (import ./conf/tmux.conf);
   };
 
   # Shell configuration
