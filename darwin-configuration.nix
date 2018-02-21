@@ -65,7 +65,6 @@ in {
     jq
     ncat
     nodejs
-    mysql
     openssh
     pass
     pwgen
