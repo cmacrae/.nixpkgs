@@ -70,7 +70,6 @@ in {
     pwgen
     ripgrep
     rsync
-    ruby
     tree
     wget
 
