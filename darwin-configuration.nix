@@ -167,6 +167,9 @@ in {
     minimize-to-application = true;
   };
 
+  # Screencap location
+  system.defaults.screencapture.location = "/tmp";
+
   # Finder configuration
   system.defaults.finder = {
     AppleShowAllExtensions = true;
