@@ -34,6 +34,9 @@ in {
         # Go REPL
         gore = super.callPackage ./overlays/gore/default.nix {};
 
+        # Terraform provisioner Ansible
+        terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
+
         # Broken Go linting packages
         # megacheck = super.callPackage ./overlays/goMetaLinter/linters/megacheck/main.nix {}; FIXME
         # ineffassign = super.callPackage ./overlays/goMetaLinter/linters/ineffassign/main.nix {}; FIXME
@@ -87,6 +90,7 @@ in {
     unstable.packer
     unstable.terraform
     customPkg.vault
+    terraformProvisionerAnsible
 
     # Overlays
     gometalinter
