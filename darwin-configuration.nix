@@ -34,6 +34,9 @@ in {
         # Go REPL
         gore = super.callPackage ./overlays/gore/default.nix {};
 
+        # Go JSON
+        goJSON = super.callPackage ./overlays/goJSON/default.nix {};
+
         # Terraform provisioner Ansible
         terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
 
@@ -103,6 +106,7 @@ in {
     errcheck
     unconvert
     gore
+    goJSON
     # ineffassign FIXME
     # megacheck FIXME
     # interfacer FIXME
