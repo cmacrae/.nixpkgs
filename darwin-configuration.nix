@@ -65,6 +65,7 @@ in {
     git
     gnupg
     gnused
+    httpie
     id3lib
     ipcalc
     ipfs
