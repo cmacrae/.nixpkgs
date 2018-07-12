@@ -62,6 +62,7 @@ in {
     curl
     cmus
     emacs
+    ffmpeg
     git
     gnupg
     gnused
