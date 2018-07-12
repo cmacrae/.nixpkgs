@@ -79,6 +79,7 @@ in {
     rsync
     tree
     wget
+    youtube-dl
 
     # Go
     unstable.go
