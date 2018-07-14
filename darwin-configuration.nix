@@ -203,10 +203,4 @@ in {
   # Services
   # Recreate /run/current-system symlink after boot
   services.activate-system.enable = true;
-
-  # kwm/khd
-  services.khd.enable = true;
-  services.kwm.enable = true;
-  services.kwm.kwmConfig = (import ./conf/kwm.conf);
-  services.khd.khdConfig = (import ./conf/khd.conf);
 }
