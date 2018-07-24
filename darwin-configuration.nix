@@ -71,6 +71,7 @@ in {
     ipcalc
     ipfs
     jq
+    unstable.mpv
     ncat
     nodejs
     openssh
