@@ -2,6 +2,7 @@
 
 let
   unstable = import <nixpkgs-unstable> {};
+  apps = import ./pkgs/apps.nix;
 
   # Custom packages
   # See relevant import paths for details
@@ -10,7 +11,6 @@ let
   };
 
 in {
-
   # Nix config
   system.stateVersion = 2;
   nix.maxJobs = 8;
@@ -18,24 +18,26 @@ in {
   nix.gc.automatic = true;
 
   nixpkgs.overlays = [
+    # macOS Applicatiions
+    (import ./pkgs/apps.nix)
     (self: super:
       {
         # Go linting
-        gometalinter = super.callPackage ./overlays/goMetaLinter/default.nix {};
-        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst/default.nix {};
-        gas = super.callPackage ./overlays/goMetaLinter/linters/gas/default.nix {};
-        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode/default.nix {};
-        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned/default.nix {};
-        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck/default.nix {};
-        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo/default.nix {};
-        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck/default.nix {};
-        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert/default.nix {};
+        gometalinter = super.callPackage ./overlays/goMetaLinter {};
+        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst {};
+        gas = super.callPackage ./overlays/goMetaLinter/linters/gas {};
+        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode {};
+        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned {};
+        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck {};
+        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo {};
+        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck {};
+        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert {};
 
         # Go REPL
-        gore = super.callPackage ./overlays/gore/default.nix {};
+        gore = super.callPackage ./overlays/gore {};
 
         # Go JSON
-        goJSON = super.callPackage ./overlays/goJSON/default.nix {};
+        goJSON = super.callPackage ./overlays/goJSON {};
 
         # Terraform provisioner Ansible
         terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
@@ -52,6 +54,14 @@ in {
   nix.package = pkgs.nix;
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    # macOS Applications
+    Caffeine
+    BeardedSpice
+    Docker
+    Firefox
+    iTerm2
+    Rocket
+
     # General
     ansible
     aspell
@@ -59,6 +69,7 @@ in {
     aspellDicts.uk
     awscli
     bash
+    browserpass
     curl
     cmus
     emacs
@@ -120,6 +131,10 @@ in {
     nix-repl
     nix-prefetch-git
   ];
+
+  environment.systemPath = [
+      "${pkgs.Docker}/Applications/Docker.app/Contents/Resources/bin"
+    ];
 
   environment.extraOutputsToInstall = [ "man" ];
   environment.variables = {
