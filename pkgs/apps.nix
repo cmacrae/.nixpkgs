@@ -28,7 +28,7 @@ installApplication =
     version = "1.1.1";
     sourceRoot = "Caffeine.app";
     src = super.fetchurl {
-      url = http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip;
+    url = "http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine${version}.zip";
       sha256 = "0lqqllpg72nn6k5ksd8bzw0x9gpprqfypfwlq8db9apra44w60wj";
     };
     description = ''
@@ -52,13 +52,27 @@ installApplication =
     homepage = https://beardedspice.github.io/;
   };
 
+  Discord = self.installApplication rec {
+    name = "Discord";
+    version = "0.0.251";
+    sourceRoot = "Discord.app";
+    src = super.fetchurl {
+    url = "https://dl.discordapp.net/apps/osx/${version}/Discord.dmg";
+      sha256 = "0fja9qi19w20z87v53zz3dad5j1w5h937rlcdxkymrmq54yjvzlq";
+    };
+    description = ''
+      All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+    '';
+    homepage = https://store.docker.com/editions/community/docker-ce-desktop-mac;
+  };
+
   Docker = self.installApplication rec {
     name = "Docker";
     version = "18.03.1-ce-mac65";
     sourceRoot = "Docker.app";
     src = super.fetchurl {
       url = https://download.docker.com/mac/stable/Docker.dmg;
-      sha256 = "1hkgi3fm04rinjfzs64p1f34q351rrzwwk5ga1jvyxvk88bj73k7";
+      sha256 = "1dd2wf94bx27hf70a0iv79cmhwcrni5zyj02d48bw5xpv5vgz8jw";
     };
     description = ''
       Docker CE for Mac is an easy-to-install desktop app for building,
@@ -107,16 +121,30 @@ installApplication =
   };
 
   iTerm2 = self.installApplication rec {
+    inherit (builtins) replaceStrings;
     name = "iTerm2";
     appname = "iTerm";
-    version = "3.1.7";
+    version = "3.2.0";
     sourceRoot = "iTerm.app";
     src = super.fetchurl {
-      url = https://iterm2.com/downloads/stable/iTerm2-3_1_7.zip;
-      sha256 = "1phy5dcfh8gq8crzchphs663xpicd3bddxzyprjsybpy88y6njfm";
+    url = "https://iterm2.com/downloads/stable/iTerm2-${replaceStrings ["\."] ["_"] version}.zip";
+      sha256 = "19121a3hdqvsm6l778s7myfm8z61ss8c0g8rlwlvypbfdybn4j3x";
     };
     description = "iTerm2 is a replacement for Terminal and the successor to iTerm";
     homepage = https://www.iterm2.com;
+  };
+
+  Keka = self.installApplication rec {
+    name = "Keka";
+    appname = "Keka";
+    version = "1.1.2";
+    sourceRoot = "Keka.app";
+    src = super.fetchurl {
+    url = "https://github.com/aonez/Keka/releases/download/v${version}/Keka-${version}.dmg";
+      sha256 = "01xqjbaafgp04zhzkg9swiripk27cnnw484lm0prdq2985bw818l";
+    };
+    description = "The macOS file archiver. Store more, share with privacy";
+    homepage = https://www.keka.io/en/;
   };
 
   Rocket = self.installApplication rec {

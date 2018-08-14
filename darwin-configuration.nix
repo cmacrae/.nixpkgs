@@ -2,7 +2,6 @@
 
 let
   unstable = import <nixpkgs-unstable> {};
-  apps = import ./pkgs/apps.nix;
 
   # Custom packages
   # See relevant import paths for details
@@ -20,35 +19,35 @@ in {
   nixpkgs.overlays = [
     # macOS Applicatiions
     (import ./pkgs/apps.nix)
+
+    # Orverlays
     (self: super:
       {
-        # Go linting
+        # Go
         gometalinter = super.callPackage ./overlays/goMetaLinter {};
-        goconst = super.callPackage ./overlays/goMetaLinter/linters/goconst {};
-        gas = super.callPackage ./overlays/goMetaLinter/linters/gas {};
-        deadcode = super.callPackage ./overlays/goMetaLinter/linters/deadcode {};
-        maligned = super.callPackage ./overlays/goMetaLinter/linters/maligned {};
-        structcheck = super.callPackage ./overlays/goMetaLinter/linters/structcheck {};
-        gocyclo = super.callPackage ./overlays/goMetaLinter/linters/gocyclo {};
-        errcheck = super.callPackage ./overlays/goMetaLinter/linters/errcheck {};
-        unconvert = super.callPackage ./overlays/goMetaLinter/linters/unconvert {};
-
-        # Go REPL
+        goconst = super.callPackage ./overlays/goconst {};
+        gas = super.callPackage ./overlays/gas {};
+        deadcode = super.callPackage ./overlays/deadcode {};
+        maligned = super.callPackage ./overlays/maligned {};
+        structcheck = super.callPackage ./overlays/structcheck {};
+        gocyclo = super.callPackage ./overlays/gocyclo {};
+        errcheck = super.callPackage ./overlays/errcheck {};
+        unconvert = super.callPackage ./overlays/unconvert {};
         gore = super.callPackage ./overlays/gore {};
-
-        # Go JSON
         goJSON = super.callPackage ./overlays/goJSON {};
+        gotags = super.callPackage ./overlays/gotags {};
 
         # Terraform provisioner Ansible
         terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
 
         # Broken Go linting packages
-        # megacheck = super.callPackage ./overlays/goMetaLinter/linters/megacheck/main.nix {}; FIXME
-        # ineffassign = super.callPackage ./overlays/goMetaLinter/linters/ineffassign/main.nix {}; FIXME
-        # interfacer = super.callPackage ./overlays/goMetaLinter/linters/interfacer/main.nix {}; FIXME
+        # megacheck = super.callPackage ./overlays/megacheck/main.nix {}; FIXME
+        # ineffassign = super.callPackage ./overlays/ineffassign/main.nix {}; FIXME
+        # interfacer = super.callPackage ./overlays/interfacer/main.nix {}; FIXME
       }
     )
   ];
+
 
   # Packages
   nix.package = pkgs.nix;
@@ -58,8 +57,10 @@ in {
     Caffeine
     BeardedSpice
     Docker
+    # Discord FIXME
     Firefox
     iTerm2
+    # Keka FIXME
     Rocket
 
     # General
@@ -86,6 +87,7 @@ in {
     ncat
     nodejs
     openssh
+    pandoc
     pass
     pwgen
     ripgrep
@@ -122,6 +124,7 @@ in {
     unconvert
     gore
     goJSON
+    gotags
     # ineffassign FIXME
     # megacheck FIXME
     # interfacer FIXME
