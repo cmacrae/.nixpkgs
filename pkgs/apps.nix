@@ -52,35 +52,6 @@ installApplication =
     homepage = https://beardedspice.github.io/;
   };
 
-  Discord = self.installApplication rec {
-    name = "Discord";
-    version = "0.0.251";
-    sourceRoot = "Discord.app";
-    src = super.fetchurl {
-    url = "https://dl.discordapp.net/apps/osx/${version}/Discord.dmg";
-      sha256 = "0fja9qi19w20z87v53zz3dad5j1w5h937rlcdxkymrmq54yjvzlq";
-    };
-    description = ''
-      All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
-    '';
-    homepage = https://store.docker.com/editions/community/docker-ce-desktop-mac;
-  };
-
-  Docker = self.installApplication rec {
-    name = "Docker";
-    version = "18.03.1-ce-mac65";
-    sourceRoot = "Docker.app";
-    src = super.fetchurl {
-      url = https://download.docker.com/mac/stable/Docker.dmg;
-      sha256 = "1dd2wf94bx27hf70a0iv79cmhwcrni5zyj02d48bw5xpv5vgz8jw";
-    };
-    description = ''
-      Docker CE for Mac is an easy-to-install desktop app for building,
-      debugging, and testing Dockerized apps on a Mac
-    '';
-    homepage = https://store.docker.com/editions/community/docker-ce-desktop-mac;
-  };
-
   Firefox = self.installApplication rec {
     name = "Firefox";
     version = "61.0.1";
@@ -134,19 +105,6 @@ installApplication =
     homepage = https://www.iterm2.com;
   };
 
-  Keka = self.installApplication rec {
-    name = "Keka";
-    appname = "Keka";
-    version = "1.1.2";
-    sourceRoot = "Keka.app";
-    src = super.fetchurl {
-    url = "https://github.com/aonez/Keka/releases/download/v${version}/Keka-${version}.dmg";
-      sha256 = "01xqjbaafgp04zhzkg9swiripk27cnnw484lm0prdq2985bw818l";
-    };
-    description = "The macOS file archiver. Store more, share with privacy";
-    homepage = https://www.keka.io/en/;
-  };
-
   Rocket = self.installApplication rec {
     name = "Rocket";
     appname = "Rocket";
@@ -154,7 +112,7 @@ installApplication =
     sourceRoot = "Rocket.app";
     src = super.fetchurl {
       url = https://dl.devmate.com/net.matthewpalmer.Rocket/Rocket.dmg;
-      sha256 = "1a7v07h3r2jlhya1afnmrqv7rl8y8clv331m9jkh3p8af2r0rc5i";
+      sha256 = "15jc6fg2q69cspjhdq3r4v2hx5m2ml089xp31lfa18rdwncyklq8";
     };
     description = "Mind-blowing emoji on your Mac";
     homepage = https://matthewpalmer.net/rocket/;

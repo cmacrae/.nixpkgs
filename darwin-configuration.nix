@@ -56,11 +56,8 @@ in {
     # macOS Applications
     Caffeine
     BeardedSpice
-    Docker
-    # Discord FIXME
     Firefox
     iTerm2
-    # Keka FIXME
     Rocket
 
     # General
@@ -83,6 +80,7 @@ in {
     ipcalc
     ipfs
     jq
+    lastpass-cli
     unstable.mpv
     ncat
     nodejs
@@ -131,19 +129,11 @@ in {
 
     # Nix
     nix
-    nix-repl
     nix-prefetch-git
   ];
 
-  environment.systemPath = [
-      "${pkgs.Docker}/Applications/Docker.app/Contents/Resources/bin"
-    ];
-
   environment.extraOutputsToInstall = [ "man" ];
   environment.variables = {
-    # Nix
-    NIX_REMOTE = "daemon";
-
     # General
     HOME = "/Users/cmacrae";
     GOROOT = "${unstable.go}/share/go";
@@ -172,11 +162,20 @@ in {
   programs.tmux = {
     enable = true;
     enableVim = true;
-    iTerm2 = true;
     tmuxConfig = (import ./conf/tmux.conf);
   };
 
   # Shell configuration
+  environment.etc."shells".text = ''
+    /bin/bash
+    /bin/csh
+    /bin/ksh
+    /bin/sh
+    /bin/tcsh
+    /run/current-system/sw/bin/zsh
+    /bin/zsh
+  '';
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
