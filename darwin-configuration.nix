@@ -94,6 +94,13 @@ in {
     wget
     youtube-dl
 
+    # Kubernetes
+    kail
+    kops
+    kubernetes
+    kubernetes-helm
+    minikube
+
     # Go
     unstable.go
     unstable.gocode
