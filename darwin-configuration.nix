@@ -2,6 +2,7 @@
 
 let
   unstable = import <nixpkgs-unstable> {};
+  home = builtins.getEnv "HOME";
 
   # Custom packages
   # See relevant import paths for details
@@ -156,6 +157,9 @@ in {
       cp = "cp -i";
       gows = "cd $GOWORKSPACE";
   };
+
+
+  environment.systemPath = ["${home}/bin"];
 
   # tmux
   programs.tmux = {
