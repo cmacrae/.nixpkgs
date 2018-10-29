@@ -227,6 +227,12 @@ in {
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
+  # Global Emacs keybindings
+  environment.etc."keybindings".text = (import ./conf/DefaultKeyBinding.dict);
+  system.activationScripts.extraUserActivation.text = ''
+    install -d -o cmacrae -g staff ${home}/Library/KeyBindings
+    ln -sfn /etc/keybindings ${home}/library/keybindings/DefaultKeyBinding.dict
+  '';
 
   # Services
   # Recreate /run/current-system symlink after boot
