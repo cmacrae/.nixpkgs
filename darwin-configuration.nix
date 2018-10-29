@@ -92,6 +92,7 @@ in {
     ripgrep
     rsync
     tree
+    unstable.triton
     wget
     youtube-dl
 
