@@ -57,8 +57,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # macOS Applications
-    Caffeine
-    BeardedSpice
     Firefox
     iTerm2
     Rocket

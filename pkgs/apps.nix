@@ -22,36 +22,6 @@ installApplication =
     };
   };
 
-  Caffeine = self.installApplication rec {
-    name = "Caffeine";
-    appname = "Caffeine";
-    version = "1.1.1";
-    sourceRoot = "Caffeine.app";
-    src = super.fetchurl {
-    url = "http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine${version}.zip";
-      sha256 = "0lqqllpg72nn6k5ksd8bzw0x9gpprqfypfwlq8db9apra44w60wj";
-    };
-    description = ''
-      Caffeine is a tiny program that puts an icon in the right side of your menu bar. Click it to prevent your Mac from automatically going to sleep, dimming the screen or starting screen savers
-    '';
-    homepage = http://lightheadsw.com/caffeine/;
-  };
-
-  BeardedSpice = self.installApplication rec {
-    name = "BeardedSpice";
-    appname = "BeardedSpice";
-    version = "2.2.3";
-    sourceRoot = "BeardedSpice.app";
-    src = super.fetchurl {
-      url = https://raw.github.com/beardedspice/beardedspice/distr/publish/releases/BeardedSpice-latest.zip;
-      sha256 = "09hb2nf22izmv08yiqs1rdd8hrwh4w8wn2ra1nj6v2kdbm532rrq";
-    };
-    description = ''
-      BeardedSpice is a menubar application for Mac OSX that allows you to control web based media players and some native apps with the media keys found on Mac keyboards
-    '';
-    homepage = https://beardedspice.github.io/;
-  };
-
   Firefox = self.installApplication rec {
     name = "Firefox";
     version = "61.0.1";
