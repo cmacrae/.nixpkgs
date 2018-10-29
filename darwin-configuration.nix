@@ -40,6 +40,9 @@ in {
         # Terraform provisioner Ansible
         terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
 
+        # up - Ultimate Plumber
+        up = super.callPackage ./overlays/up {};
+
         # Broken Go linting packages
         # megacheck = super.callPackage ./overlays/megacheck/main.nix {}; FIXME
         # ineffassign = super.callPackage ./overlays/ineffassign/main.nix {}; FIXME
@@ -133,6 +136,7 @@ in {
     # ineffassign FIXME
     # megacheck FIXME
     # interfacer FIXME
+    up
 
     # Nix
     nix
