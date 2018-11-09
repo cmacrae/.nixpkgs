@@ -95,12 +95,14 @@ in {
     unstable.triton
     wget
     youtube-dl
+    yq
 
     # Kubernetes
     kail
-    kops
+    unstable.kops
     kubernetes
     kubernetes-helm
+    unstable.heptio-ark
     minikube
 
     # Go
