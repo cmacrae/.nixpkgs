@@ -14,7 +14,6 @@ in {
   # Nix config
   system.stateVersion = 2;
   nix.maxJobs = 8;
-  nix.trustedUsers = [ "cmacrae" ];
 
   nixpkgs.overlays = [
     # macOS Applicatiions
