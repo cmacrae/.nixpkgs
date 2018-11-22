@@ -120,7 +120,6 @@ in {
     nix-prefetch-git
   ];
 
-  environment.extraOutputsToInstall = [ "man" ];
   environment.variables = {
     # General
     HOME = "/Users/cmacrae";
