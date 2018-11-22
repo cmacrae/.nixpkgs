@@ -75,6 +75,7 @@ in {
     pandoc
     pass
     pwgen
+    ranger
     ripgrep
     rsync
     tree
@@ -202,7 +203,6 @@ in {
       fi
 
       source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      source ${pkgs.deer}/share/zsh/site-functions/deer
     '';
   };
 
