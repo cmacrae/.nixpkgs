@@ -157,16 +157,7 @@ in {
   };
 
   # Shell configuration
-  environment.etc."shells".text = ''
-    /bin/bash
-    /bin/csh
-    /bin/ksh
-    /bin/sh
-    /bin/tcsh
-    /run/current-system/sw/bin/zsh
-    /bin/zsh
-  '';
-
+  environment.shells = ["/run/current-system/sw/bin/zsh"];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
