@@ -24,29 +24,14 @@ in {
     (self: super:
       {
         # Go
-        gometalinter = super.callPackage ./overlays/goMetaLinter {};
-        goconst = super.callPackage ./overlays/goconst {};
-        gas = super.callPackage ./overlays/gas {};
-        deadcode = super.callPackage ./overlays/deadcode {};
-        maligned = super.callPackage ./overlays/maligned {};
-        structcheck = super.callPackage ./overlays/structcheck {};
-        gocyclo = super.callPackage ./overlays/gocyclo {};
-        errcheck = super.callPackage ./overlays/errcheck {};
-        unconvert = super.callPackage ./overlays/unconvert {};
         gore = super.callPackage ./overlays/gore {};
         goJSON = super.callPackage ./overlays/goJSON {};
-        gotags = super.callPackage ./overlays/gotags {};
 
         # Terraform provisioner Ansible
         terraformProvisionerAnsible = super.callPackage ./overlays/terraform-provisioner-ansible {};
 
         # up - Ultimate Plumber
         up = super.callPackage ./overlays/up {};
-
-        # Broken Go linting packages
-        # megacheck = super.callPackage ./overlays/megacheck/main.nix {}; FIXME
-        # ineffassign = super.callPackage ./overlays/ineffassign/main.nix {}; FIXME
-        # interfacer = super.callPackage ./overlays/interfacer/main.nix {}; FIXME
       }
     )
   ];
@@ -113,6 +98,9 @@ in {
     unstable.gotools
     unstable.golint
     unstable.go2nix
+    unstable.gometalinter
+    unstable.errcheck
+    unstable.gotags
 
     # HashiCorp
     unstable.consul
@@ -123,21 +111,8 @@ in {
     terraformProvisionerAnsible
 
     # Overlays
-    gometalinter
-    goconst
-    gas
-    deadcode
-    maligned
-    structcheck
-    gocyclo
-    errcheck
-    unconvert
     gore
     goJSON
-    gotags
-    # ineffassign FIXME
-    # megacheck FIXME
-    # interfacer FIXME
     up
 
     # Nix
