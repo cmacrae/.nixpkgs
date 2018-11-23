@@ -14,6 +14,7 @@ in {
   # Nix config
   system.stateVersion = 2;
   nix.maxJobs = 8;
+  nix.buildCores = 0;
 
   nixpkgs.overlays = [
     # macOS Applicatiions
