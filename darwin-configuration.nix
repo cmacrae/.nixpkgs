@@ -140,14 +140,23 @@ in {
   };
 
   environment.shellAliases = {
-      ls = "ls -G";
-      rm = "rm -i";
-      cp = "cp -i";
-      gows = "cd $GOWORKSPACE";
+    ls = "ls -G";
+    rm = "rm -i";
+    cp = "cp -i";
+    gows = "cd $GOWORKSPACE";
   };
 
 
   environment.systemPath = ["${home}/bin"];
+
+  # gpg agent
+  programs.gnupg.agent = {
+    enable = true ;
+    enableSSHSupport = true ;
+  };
+
+  # nix-index
+  programs.nix-index.enable = true;
 
   # tmux
   programs.tmux = {
