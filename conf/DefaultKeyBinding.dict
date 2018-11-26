@@ -1,7 +1,4 @@
-''
 {
-/* Keybindings for emacs emulation */
-         
     /* Ctrl shortcuts */
     "^l"        = "centerSelectionInVisibleArea:";  /* C-l          Recenter */
     "^/"        = "undo:";                          /* C-/          Undo */
@@ -9,14 +6,6 @@
     "^ "        = "setMark:";                       /* C-Spc        Set mark */
     "^\@"       = "setMark:";                       /* C-@          Set mark */
     "^w"        = "deleteToMark:";                  /* C-w          Delete to mark */
-
-
-    /* Incremental search. */
-/* Uncomment these lines If Incremental Search IM is installed */
-/*  "^s"        = "ISIM_incrementalSearch:";        /* C-s          Incremental search */
-/*  "^r"        = "ISIM_reverseIncrementalSearch:"; /* C-r          Reverse incremental search */
-/*  "^g"        = "abort:";                         /* C-g          Abort */
-
 
     /* Meta shortcuts */
     "~f"        = "moveWordForward:";               /* M-f          Move forward word */
@@ -57,4 +46,3 @@
     };
 
 }
-''

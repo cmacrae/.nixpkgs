@@ -162,7 +162,7 @@ in {
   programs.tmux = {
     enable = true;
     enableVim = true;
-    tmuxConfig = (import ./conf/tmux.conf);
+    tmuxConfig = builtins.readFile ./conf/tmux.conf;
   };
 
   # Shell configuration
@@ -237,11 +237,19 @@ in {
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
-  # Global Emacs keybindings
-  environment.etc."keybindings".text = (import ./conf/DefaultKeyBinding.dict);
+
+  # - Global Emacs keybindings
+  # - browserpass binary path for Firefox
+  environment.etc."keybindings".text =  builtins.readFile ./conf/DefaultKeyBinding.dict;
   system.activationScripts.extraUserActivation.text = ''
     install -d -o cmacrae -g staff ${home}/Library/KeyBindings
-    ln -sfn /etc/keybindings ${home}/library/keybindings/DefaultKeyBinding.dict
+    ln -sfn /etc/keybindings ${home}/Library/keybindings/DefaultKeyBinding.dict
+
+
+    install -d -o cmacrae -g staff ${home}/Library/Application\ Support/Mozilla/NativeMessagingHosts
+    ln -sf \
+       ${pkgs.browserpass}/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json \
+       ${home}/Library/Application\ Support/Mozilla/NativeMessagingHosts/com.dannyvankooten.browserpass.json
   '';
 
   # Services

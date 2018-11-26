@@ -31,32 +31,6 @@ installApplication =
       url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-US/Firefox%20${version}.dmg";
       sha256 = "13sx6y6585dgvy4rrmcsilbvqblzn6fyi7nz1h3jbyh56ws4fbkc";
     };
-    postInstall = ''
-      for file in  \
-          $out/Applications/Firefox.app/Contents/MacOS/firefox \
-          $out/Applications/Firefox.app/Contents/MacOS/firefox-bin
-      do
-          dir=$(dirname "$file")
-          base=$(basename "$file")
-          mv $file $dir/.$base
-          cat > $file <<'EOF'
-  #!/bin/bash
-  export PATH=${super.gnupg}/bin:${super.pass}/bin:$PATH
-  export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
-  export PASSWORD_STORE_EXTENSIONS_DIR="/run/current-system/sw/lib/password-store/extensions";
-  export PASSWORD_STORE_DIR="$HOME/.password-store";
-  export GNUPGHOME="$HOME/.config/gnupg"
-  export GPG_TTY=$(tty)
-  if ! pgrep -x "gpg-agent" > /dev/null; then
-  ${super.gnupg}/gpgconf --launch gpg-agent
-  fi
-  dir=$(dirname "$0")
-  name=$(basename "$0")
-  exec "$dir"/."$name" "$@"
-  EOF
-          chmod +x $file
-      done
-    '';
     description = "Free and open-source web browser developed by Mozilla Foundation";
     homepage = https://www.mozilla.org/en-US/firefox;
   };
