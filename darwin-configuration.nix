@@ -187,9 +187,8 @@ in {
       setopt   autopushd pushdminus extendedglob rcquotes
       unsetopt bgnice autoparamslash
 
-      # Emacs bindings & fix reverse search in tmux
+      # Emacs bindings
       bindkey -e
-      bindkey '^R' history-incremental-search-backward
 
       # Prompts
       if [[ ! -n $INSIDE_EMACS ]]; then
