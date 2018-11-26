@@ -24,12 +24,12 @@ installApplication =
 
   Firefox = self.installApplication rec {
     name = "Firefox";
-    version = "61.0.1";
+    version = "63.0.3";
     sourceRoot = "Firefox.app";
     src = super.fetchurl {
       name = "Firefox-${version}.dmg";
-      url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-US/Firefox%20${version}.dmg";
-      sha256 = "13sx6y6585dgvy4rrmcsilbvqblzn6fyi7nz1h3jbyh56ws4fbkc";
+      url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-GB/Firefox%20${version}.dmg";
+      sha256 = "0am911fswgg3s3888f5938nyzi6y0bkj8i6bibikr338xjp6vj8s";
     };
     description = "Free and open-source web browser developed by Mozilla Foundation";
     homepage = https://www.mozilla.org/en-US/firefox;
