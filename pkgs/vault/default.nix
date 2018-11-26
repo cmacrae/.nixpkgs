@@ -15,11 +15,11 @@ let
 
 in stdenv.mkDerivation rec {
   name = "vault-${version}";
-  version = "0.10.3";
+  version = "0.11.5";
 
   src = fetchzip {
     url = "https://releases.hashicorp.com/vault/${version}/vault_${version}_darwin_amd64.zip";
-    sha256 = "07d45smhvi39319z1sxg2zgd5r4zvacgjp0hpdki5dcqvxw0jsrl";
+    sha256 = "0015kj6q0ywad14mn4wf2awgyr8bc4m7624725n79iyw8n1qfhx4";
   };
 
   phases = "installPhase";
