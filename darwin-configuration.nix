@@ -149,12 +149,6 @@ in {
 
   environment.systemPath = ["${home}/bin"];
 
-  # gpg agent
-  programs.gnupg.agent = {
-    enable = true ;
-    enableSSHSupport = true ;
-  };
-
   # nix-index
   programs.nix-index.enable = true;
 
