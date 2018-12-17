@@ -56,7 +56,7 @@ installApplication =
     sourceRoot = "Rocket.app";
     src = super.fetchurl {
       url = https://dl.devmate.com/net.matthewpalmer.Rocket/Rocket.dmg;
-      sha256 = "15jc6fg2q69cspjhdq3r4v2hx5m2ml089xp31lfa18rdwncyklq8";
+      sha256 = "0gkc2wag0mhn0q2wg4fd4zgrxafizch9vvwqmd4pp55pbj03v63j";
     };
     description = "Mind-blowing emoji on your Mac";
     homepage = https://matthewpalmer.net/rocket/;
