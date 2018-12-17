@@ -2,15 +2,15 @@
 
 buildGoPackage rec {
   name = "up-unstable-${version}";
-  version = "2018-10-31";
-  rev = "804be3cfb8982f83e850f28bef5730672b6d04da";
+  version = "2018-12-04";
+  rev = "5873371e200761debda54528d2aa19a9e4c67c53";
 
   goPackagePath = "github.com/akavel/up";
 
   src = fetchgit {
     inherit rev;
     url = "https://github.com/akavel/up";
-    sha256 = "171bwbk2c7jbi51xdawzv7qy71492mfs9z5j0a5j52qmnr4vjjgs";
+    sha256 = "0fxp1wwi0y3kvvv13bdg2y7as0q1dazm8mab509h89s7p1g3r06r";
   };
 
   goDeps = ./deps.nix;
