@@ -55,24 +55,20 @@ in {
     bash
     browserpass
     curl
-    cmus
     emacs
     ffmpeg
     fzf
     git
     gnupg
     gnused
-    httpie
     id3lib
     ipcalc
-    ipfs
     jq
     lastpass-cli
     unstable.mpv
     ncat
     nodejs
     openssh
-    pandoc
     pass
     pwgen
     ranger
