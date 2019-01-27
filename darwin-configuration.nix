@@ -240,6 +240,7 @@ in {
        ${pkgs.browserpass}/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json \
        ${home}/Library/Application\ Support/Mozilla/NativeMessagingHosts/com.dannyvankooten.browserpass.json
 
+    install -d -o cmacrae -g staff ${home}/Library/Application\ Support/Google/Chrome/NativeMessagingHosts
     ln -sf \
        ${pkgs.browserpass}/etc/chrome-host.json \
        ${home}/Library/Application\ Support/Google/Chrome/NativeMessagingHosts/com.dannyvankooten.browserpass.json
