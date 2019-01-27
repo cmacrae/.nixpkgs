@@ -227,10 +227,29 @@ in {
     remapCapsLockToControl = true;
   };
 
+  # VT220 hacks
+  # --
+  # I use and old DEC VT220 terminal at home.
+  # These hacks put in place auto-login with getty
+  # spawning a tmux session to attach to remotely.
+  environment.etc."gettytab".text = builtins.readFile ./conf/gettytab;
+  environment.etc."autoterm.sh".text = ''
+  #!/bin/sh
+  ARGS=("$@")
+  exec /usr/bin/login "''${ARGS[@]}" \
+  zsh -c "/run/current-system/sw/bin/tmux -f /Users/cmacrae/.tmux.conf new-session -A -s vt"
+  '';
+  launchd.daemons.serialconsole = {
+    command = "/usr/libexec/getty std.ttyUSB cu.usbserial";
+    serviceConfig.KeepAlive = true;
+  };
+
   # - Global Emacs keybindings
   # - browserpass binary path for Firefox
   environment.etc."keybindings".text =  builtins.readFile ./conf/DefaultKeyBinding.dict;
   system.activationScripts.extraUserActivation.text = ''
+    chmod a+x /etc/autoterm.sh || true
+
     install -d -o cmacrae -g staff ${home}/Library/KeyBindings
     ln -sfn /etc/keybindings ${home}/Library/keybindings/DefaultKeyBinding.dict
 
